@@ -59,6 +59,7 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
       return;
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(restaurants));
+    window.dispatchEvent(new Event("restaurants_updated"));
   }, [restaurants]);
 
   const handleSave = (data: Omit<IRestaurant, "id"> & { id?: number }) => {
@@ -120,7 +121,7 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <main className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         <div className="relative mb-10 overflow-hidden rounded-3xl bg-gradient-to-br from-surface-card via-surface to-surface-card border border-border p-8 sm:p-10">
           <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-60 h-60 bg-amber-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
