@@ -149,34 +149,40 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
 
         {restaurants.length > 0 && (
           <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
-                {availableCategories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveFilter(cat)}
-                    className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-medium transition-all duration-300 cursor-pointer ${
-                      activeFilter === cat
-                        ? "bg-primary/15 text-primary border border-primary/30 shadow-sm shadow-primary/10"
-                        : "bg-surface-card text-text-muted border border-border hover:text-text-main hover:border-border-hover"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-card p-3 rounded-2xl border border-border shadow-lg shadow-black/20">
+              
+              <div className="flex-1 min-w-0 overflow-hidden rounded-xl">
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                  {availableCategories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveFilter(cat)}
+                      className={`flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                        activeFilter === cat
+                          ? "bg-primary text-white shadow-md shadow-primary/30"
+                          : "bg-surface-light text-text-secondary hover:bg-surface-lighter hover:text-text-main border border-transparent hover:border-border"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              <div className="relative w-full sm:w-72 flex-shrink-0">
-                <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted text-sm" />
+              <div className="relative w-full md:w-80 flex-shrink-0">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <FiSearch className="text-text-muted text-lg" />
+                </div>
                 <input
                   id="search-input"
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Restoran ara..."
-                  className="w-full pl-10 pr-4 py-2.5 bg-surface-card rounded-xl border border-border text-text-main placeholder-text-muted/40 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200 text-sm"
+                  placeholder="Restoran veya lokasyon ara..."
+                  className="w-full pl-11 pr-4 py-3 bg-surface-light rounded-xl border border-border text-text-main placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm shadow-inner"
                 />
               </div>
+              
             </div>
           </div>
         )}
