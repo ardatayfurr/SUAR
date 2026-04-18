@@ -6,7 +6,7 @@ Modern, şık ve kullanıcı dostu bir restoran listeleme (CRUD) uygulaması. Re
 
 Bu proje, staj ve portfolyo gereksinimlerini karşılamak üzere geliştirilmiş profesyonel bir Frontend uygulamasıdır. "Glassmorphism" tasarım trendi kullanılarak, yapay zeka ile üretilmiş yüksek kaliteli restoran görselleri ile desteklenmiştir. Veriler tarayıcınızın `localStorage` alanında tutulur, böylece sayfayı yenilediğinizde bile bilgileriniz kaybolmaz.
 
-## 📸 Ekran Görüntüleri
+## Ekran Görüntüleri
 
 Aşağıda uygulamanın çeşitli özelliklerini ve modern arayüzünü gösteren örnek kareler yer almaktadır:
 
