@@ -148,7 +148,7 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
         </div>
 
         {restaurants.length > 0 && (
-          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <div className="mb-14 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-card p-3 rounded-2xl border border-border shadow-lg shadow-black/20">
               
               <div className="flex-1 min-w-0 overflow-hidden rounded-xl">
