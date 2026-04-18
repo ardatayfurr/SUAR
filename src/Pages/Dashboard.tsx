@@ -121,46 +121,48 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
 
   return (
     <>
-      <main className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
-        <div className="relative mb-10 overflow-hidden rounded-3xl bg-gradient-to-br from-surface-card via-surface to-surface-card border border-border p-8 sm:p-10">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-60 h-60 bg-amber-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <main className="w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-16 flex flex-col gap-12 sm:gap-16">
+        {/* Stats Section */}
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-surface-card via-surface to-surface-card border border-border p-8 sm:p-12 shadow-2xl shadow-black/40">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
 
-          <div className="relative">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div className="relative z-10">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main mb-2">
+                <h2 className="text-4xl sm:text-5xl font-extrabold text-text-main mb-3 tracking-tight">
                   Restoranlarınız
                 </h2>
-                <p className="text-sm sm:text-base text-text-muted">
-                  Keşfedin, ekleyin ve yönetin — tüm restoranlarınız tek bir yerde
+                <p className="text-base sm:text-lg text-text-muted max-w-xl leading-relaxed">
+                  Keşfedin, ekleyin ve yönetin — tüm restoranlarınız tek bir yerde şık bir şekilde listelensin.
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              <StatCard icon={<IoStorefront className="text-xl" />} label="Toplam Restoran" value={restaurants.length} color="bg-primary" delay={0} />
-              <StatCard icon={<IoStar className="text-xl" />} label="Ortalama Puan" value={avgRating} color="bg-info" delay={80} />
-              <StatCard icon={<IoLocation className="text-xl" />} label="Farklı Lokasyon" value={uniqueLocations} color="bg-success" delay={160} />
-              <StatCard icon={<IoGridOutline className="text-xl" />} label="Kategori" value={uniqueCategories} color="bg-purple-500" delay={240} />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <StatCard icon={<IoStorefront className="text-2xl" />} label="Toplam Restoran" value={restaurants.length} color="bg-primary" delay={0} />
+              <StatCard icon={<IoStar className="text-2xl" />} label="Ortalama Puan" value={avgRating} color="bg-info" delay={80} />
+              <StatCard icon={<IoLocation className="text-2xl" />} label="Farklı Lokasyon" value={uniqueLocations} color="bg-success" delay={160} />
+              <StatCard icon={<IoGridOutline className="text-2xl" />} label="Kategori" value={uniqueCategories} color="bg-purple-500" delay={240} />
             </div>
           </div>
         </div>
 
+        {/* Filters and Search Section */}
         {restaurants.length > 0 && (
-          <div className="mb-14 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-card p-3 rounded-2xl border border-border shadow-lg shadow-black/20">
+          <div className="animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-surface-card/50 backdrop-blur-xl p-4 sm:p-5 rounded-[2rem] border border-border shadow-xl shadow-black/20">
               
-              <div className="flex-1 min-w-0 overflow-hidden rounded-xl">
-                <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <div className="flex items-center gap-3 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide px-1">
                   {availableCategories.map((cat) => (
                     <button
                       key={cat}
                       onClick={() => setActiveFilter(cat)}
-                      className={`flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                      className={`flex-shrink-0 px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                         activeFilter === cat
-                          ? "bg-primary text-white shadow-md shadow-primary/30"
-                          : "bg-surface-light text-text-secondary hover:bg-surface-lighter hover:text-text-main border border-transparent hover:border-border"
+                          ? "bg-gradient-to-r from-primary to-amber-500 text-white shadow-lg shadow-primary/30 scale-105"
+                          : "bg-surface-light text-text-secondary hover:bg-surface hover:text-text-main border border-border hover:border-primary/50"
                       }`}
                     >
                       {cat}
@@ -169,9 +171,9 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
                 </div>
               </div>
 
-              <div className="relative w-full md:w-80 flex-shrink-0">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <FiSearch className="text-text-muted text-lg" />
+              <div className="relative w-full lg:w-96 flex-shrink-0 group">
+                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors group-focus-within:text-primary">
+                  <FiSearch className="text-text-muted group-focus-within:text-primary text-xl transition-colors" />
                 </div>
                 <input
                   id="search-input"
@@ -179,7 +181,7 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Restoran veya lokasyon ara..."
-                  className="w-full pl-11 pr-4 py-3 bg-surface-light rounded-xl border border-border text-text-main placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm shadow-inner"
+                  className="w-full pl-14 pr-5 py-4 bg-surface-light rounded-2xl border border-border text-text-main placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-base shadow-inner"
                 />
               </div>
               
@@ -187,19 +189,26 @@ const Dashboard = ({ isModalOpen, setIsModalOpen }: DashboardProps) => {
           </div>
         )}
 
+        {/* Restaurant Grid Section */}
         {restaurants.length === 0 ? (
           <EmptyState onAddClick={() => setIsModalOpen(true)} />
         ) : filteredRestaurants.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 animate-fade-in">
-            <div className="w-20 h-20 rounded-2xl bg-surface-card border border-border flex items-center justify-center mb-5">
-              <MdRestaurantMenu className="text-4xl text-text-muted/20" />
+          <div className="flex flex-col items-center justify-center py-32 animate-fade-in bg-surface-card/30 rounded-[2.5rem] border border-border/50">
+            <div className="w-24 h-24 rounded-3xl bg-surface border border-border flex items-center justify-center mb-6 shadow-lg shadow-black/20">
+              <MdRestaurantMenu className="text-5xl text-text-muted/30" />
             </div>
-            <p className="text-text-muted text-sm">
-              &ldquo;{searchQuery || activeFilter}&rdquo; için sonuç bulunamadı
+            <p className="text-text-muted text-lg font-medium">
+              &ldquo;<span className="text-text-main">{searchQuery || activeFilter}</span>&rdquo; için sonuç bulunamadı
             </p>
+            <button 
+              onClick={() => {setSearchQuery(""); setActiveFilter("Tümü");}}
+              className="mt-6 px-6 py-2.5 bg-surface-light hover:bg-surface border border-border hover:border-primary/50 rounded-xl text-sm font-medium transition-all text-text-secondary hover:text-text-main cursor-pointer"
+            >
+              Filtreleri Temizle
+            </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {filteredRestaurants.map((restaurant, index) => (
               <RestaurantCard
                 key={restaurant.id}
